@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+		
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Visit Logger</title>
+
+    <style>
+    body {
+        background-color: #232F3E;
+        }
+    label, button {
+        color: #FF9900;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+     input {
+        color: #232F3E;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+        }
+    </style>
+    <script>
+        
+        var callAPI = (CustomerName, Salesperson, Date, MeetingType, MeetingSubject, MeetingDetails, VIPCustomer, Feedback)=>{
+            
+            var myHeaders = new Headers();
+            
+            myHeaders.append("Content-Type", "application/json");
+            
+            var raw = JSON.stringify({
+//			"firstName":firstName,
+//			"lastName":lastName,
+			"CustomerName":CustomerName,
+			"Salesperson":Salesperson,
+			"Date":Date,
+			"MeetingType":MeetingType,
+			"MeetingSubject":MeetingSubject, 
+			"MeetingDetails":MeetingDetails, 
+			"VIPCustomer":VIPCustomer, 
+			"Feedback":Feedback
+			});
+           
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+			
+            // make API call to pass visit data
+            fetch("https://748nxq4fc1.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+    </script>
+</head>
+<body>
+<h1 style="color:White;">Visit Logger</h1>
+<br><br>
+<h3 style="color:White;">Please enter your visit details below:</h3>
+<br><br>
+    <form>
+		<table>
+<!-- 			<tr>
+				<td><label>First Name :</label></td>
+				<td><input type="text" id="fName"></td>
+				
+			</tr>	
+			<tr>
+				<td><label>Last Name :</label></td>
+				<td><input type="text" id="lName"></td>
+			</tr>
+ -->
+		
+			<tr>
+				<td><label>Customer Name</label></td>
+				<td><input type="text" id="CustomerName"></td>
+			</tr>
+			
+			
+			<tr>
+				<td><label>Salesperson Name</label></td>
+				<td><input type="text" id="Salesperson"></td>
+			</tr>
+			
+			<tr>
+				<td><label>Date (dd/mm/yy)</label></td>
+				<td><input type="text" id="Date">
+
+				</td>
+			</tr>
+			
+			<tr>
+				<td><label>Meeting Type</label></td>
+				<td>
+					<select name="MeetingType" id="MeetingType" style="float: left">
+					  <option value="MEETING">Meeting</option>
+					  <option value="COLLECTION">Collection</option>
+					  <option value="COMPLAINT">Complaint</option>
+					  <option value="STOREVISIT">Store Visit</option>
+					  <option value="ADMIN">Admin Work</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+			<td><label>Meeting Subject</label></td>
+			<td><input type="text" id="MeetingSubject"></td>
+			</tr>
+			
+			<tr>
+			<td><label>Meeting Details</label></td>
+			<td><input type="text" id="MeetingDetails" size="50"></td>
+			</tr>
+			
+			
+			<tr>
+				<td><label>VIP Customer</label></td>
+				<td><select name="VIPCustomer" id="VIPCustomer">
+				  <option value="NO">No</option>
+				  <option value="YES">Yes</option>
+				</select></td>
+			</tr>
+		
+			
+			<tr>
+				<td><label>Feedback</label></td>
+				<td><select name="Feedback" id="Feedback">
+				  <option value="Good">Good</option>
+				  <option value="Neutral">Neutral</option>
+				  <option value="Bad">Bad</option>
+				  <option value="Terrible">Terrible :(</option>
+				</select></td>
+			</tr>
+		</table>		
+<br>
+        <button type="button" onclick="callAPI(
+		document.getElementById('CustomerName').value,
+		document.getElementById('Salesperson').value,
+		document.getElementById('Date').value,
+		document.getElementById('MeetingType').value,
+		document.getElementById('MeetingSubject').value,
+		document.getElementById('MeetingDetails').value,
+		document.getElementById('VIPCustomer').value,
+		document.getElementById('Feedback').value)">Call API</button>
+    </form>
+</body>
+</html>
+
+
