@@ -8,6 +8,10 @@
   max-width: 800px;
 }
 
+.icon--size {
+  width: 3em;
+}
+
 #MeetingDetails {
   resize: vertical;
 }
