@@ -86,23 +86,28 @@
         <p>How was the meeting?</p>
         <label>
           <input class="w3-radio" type="radio" name="meeting-feedback" value="very-good">
-          <i class="far fa-grin fa-3x"></i>
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/grin-regular.svg"
+               alt="grinning emoticon">
         </label>
         <label>
           <input class="w3-radio" type="radio" name="meeting-feedback" value="good">
-          <i class="far fa-smile fa-3x"></i>
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/smile-regular.svg"
+               alt="smiling emoticon">
         </label>
         <label>
           <input class="w3-radio" type="radio" name="meeting-feedback" value="neutral">
-          <i class="far fa-meh fa-3x"></i>
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/meh-regular.svg"
+               alt="meh emoticon">
         </label>
         <label>
           <input class="w3-radio" type="radio" name="meeting-feedback" value="bad">
-          <i class="far fa-frown fa-3x"></i>
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/frown-regular.svg"
+               alt="frown emoticon">
         </label>
         <label>
           <input class="w3-radio" type="radio" name="meeting-feedback" value="terrible">
-          <i class="far fa-sad-cry fa-3x"></i>
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/sad-cry-regular.svg"
+               alt="sad crying emoticon">
         </label>
         <p></p>
 
@@ -113,6 +118,7 @@
           document.getElementById('MeetingType').value,
           document.getElementById('MeetingSubject').value,
           document.getElementById('MeetingDetails').value,
+          // The code below requires changes to retrieve the checked radio button.
           document.getElementById('VIPCustomer').value,
           document.getElementById('Feedback').value)">Submit
         </button>
