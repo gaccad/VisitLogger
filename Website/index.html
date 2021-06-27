@@ -74,11 +74,11 @@
 
         <p>Did you meet a VIP customer?</p>
         <label>
-          <input class="w3-radio" type="radio" name="vip-meeting" value="YES">
+          <input class="w3-radio" type="radio" name="vip-meeting" value="YES" onclick="getVIP()">
           <span>Yes</span>
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="vip-meeting" value="NO" checked>
+          <input class="w3-radio" type="radio" name="vip-meeting" value="NO" onclick="getVIP()" checked>
           <span>No</span>
         </label>
 		
@@ -92,22 +92,22 @@
 
         <p>How was the meeting?</p>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="Good">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Good" onclick="getFeedback()">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/smile-regular.svg"
                alt="smiling emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="Neutral">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Neutral" onclick="getFeedback()">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/meh-regular.svg"
                alt="meh emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="Bad">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Bad" onclick="getFeedback()">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/frown-regular.svg"
                alt="frown emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="Terrible">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Terrible" onclick="getFeedback()">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/sad-cry-regular.svg"
                alt="sad crying emoticon">
         </label>
@@ -123,21 +123,31 @@
         <p></p> -->
 
 		<script>
+		
 			var vip = document.getElementsByName('vip-meeting');
 			var vip_value;
+			
+		function getVIP() {
+
 			for(var i = 0; i < vip.length; i++){
 				if(vip[i].checked){
 					vip_value = vip[i].value;
+					break;
 				}
 			}
+		}	
 			
 			var feedback = document.getElementsByName('meeting-feedback');
 			var feedback_value;
-			for(var i = 0; i < feedback.length; i++){
-				if(feedback[i].checked){
-					feedback_value = feedback[i].value;
+			
+		function getFeedback() {	
+			for(var j = 0; j < feedback.length; j++){
+				if(feedback[j].checked){
+					feedback_value = feedback[j].value;
+					break;
 				}
 			}
+		}
 
 		</script>
 
