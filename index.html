@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Visit Logger</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="get.css"> 
+  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <script src="get.js"></script>
+
+</head>
+
+<body>
+
+  <div class="visit-form">
+
+    <div class="visit-form--max-width">
+
+      <div class="w3-container w3-dark-gray">
+        <h2>Visit Logger</h2>
+      </div>
+
+      <form class="w3-container w3-card-4 w3-padding-24">
+
+        <p>We hope you had a good meeting. Please let us know a few details about your meeting.</p>
+        <p></p>
+
+        <label for="CustomerName">
+          <span>Customer name:</span>
+          <input class="w3-input w3-light-grey" type="text" id="CustomerName">
+        </label>
+        <p></p>
+
+        <label for="Salesperson">
+          <label >Sales person name:</label>
+          <input class="w3-input w3-light-grey" type="text" id="Salesperson">
+        </label>
+        <p></p>
+
+        <label for="Date">
+          <span>Date:</span>
+          <input class="w3-input w3-light-grey" type="date" id="Date">
+        </label>
+        <p></p>
+
+        <label>Meeting type:</label>
+        <select class="w3-select w3-light-grey" id="MeetingType">
+          <option value="MEETING">Meeting</option>
+          <option value="COLLECTION">Collection</option>
+          <option value="COMPLAINT">Complaint</option>
+          <option value="STOREVISIT">Store Visit</option>
+          <option value="ADMIN">Admin Work</option>
+        </select>
+        <p></p>
+
+        <label for="MeetingSubject">
+          <span>Meeting subject:</span>
+          <input class="w3-input w3-light-grey" type="text" id="MeetingSubject">
+        </label>
+        <p></p>
+
+        <label for="MeetingDetails">
+          <span>Meeting details:</span>
+          <textarea class="w3-input w3-light-grey" type="text" id="MeetingDetails"></textarea>
+        </label>
+        <p></p>
+
+        <p>Did you meet a VIP customer?</p>
+        <label>
+          <input class="w3-radio" type="radio" name="vip-meeting" value="YES">
+          <span>Yes</span>
+        </label>
+        <label>
+          <input class="w3-radio" type="radio" name="vip-meeting" value="NO" checked>
+          <span>No</span>
+        </label>
+		
+<!-- 		<select name="VIPCustomer" id="VIPCustomer">
+				  <option value="NO">No</option>
+				  <option value="YES">Yes</option>
+		</select> -->
+				
+				
+        <p></p>
+
+        <p>How was the meeting?</p>
+        <label>
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Good">
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/smile-regular.svg"
+               alt="smiling emoticon">
+        </label>
+        <label>
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Neutral">
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/meh-regular.svg"
+               alt="meh emoticon">
+        </label>
+        <label>
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Bad">
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/frown-regular.svg"
+               alt="frown emoticon">
+        </label>
+        <label>
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Terrible">
+          <img class="icon--size" src="fontawesome-free-5.15.3-web/sad-cry-regular.svg"
+               alt="sad crying emoticon">
+        </label>
+		
+
+<!-- 		<select name="Feedback" id="Feedback">
+				  <option value="Good">Good</option>
+				  <option value="Neutral">Neutral</option>
+				  <option value="Bad">Bad</option>
+				  <option value="Terrible">Terrible :(</option>
+				</select>
+		
+        <p></p> -->
+
+		<script>
+			var vip = document.getElementsByName('vip-meeting');
+			var vip_value;
+			for(var i = 0; i < vip.length; i++){
+				if(vip[i].checked){
+					vip_value = vip[i].value;
+				}
+			}
+			
+			var feedback = document.getElementsByName('meeting-feedback');
+			var feedback_value;
+			for(var i = 0; i < feedback.length; i++){
+				if(feedback[i].checked){
+					feedback_value = feedback[i].value;
+				}
+			}
+
+		</script>
+
+        <button class="w3-btn w3-amber" type="button" onclick="callAPI(
+          document.getElementById('CustomerName').value,
+          document.getElementById('Salesperson').value,
+          document.getElementById('Date').value,
+          document.getElementById('MeetingType').value,
+          document.getElementById('MeetingSubject').value,
+          document.getElementById('MeetingDetails').value,
+          vip_value,
+          feedback_value)">Submit
+        </button>
+
+      </form>
+
+    </div>
+
+
+  </div>
+
+
+<!--
+
+<h1 style="color:White;">Visit Logger</h1>
+<br><br>
+<h3 style="color:White;">Please enter your visit details below:</h3>
+<br><br>
+<form>
+  <table>
+
+    <tr>
+      <td><label>Customer Name</label></td>
+      <td><input type="text" id="CustomerName"></td>
+    </tr>
+
+
+    <tr>
+      <td><label>Salesperson Name</label></td>
+      <td><input type="text" id="Salesperson"></td>
+    </tr>
+
+    <tr>
+      <td><label>Date (dd/mm/yy)</label></td>
+      <td><input type="text" id="Date">
+
+      </td>
+    </tr>
+
+    <tr>
+      <td><label>Meeting Type</label></td>
+      <td>
+        <select name="MeetingType" id="MeetingType" style="float: left">
+          <option value="MEETING">Meeting</option>
+          <option value="COLLECTION">Collection</option>
+          <option value="COMPLAINT">Complaint</option>
+          <option value="STOREVISIT">Store Visit</option>
+          <option value="ADMIN">Admin Work</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label>Meeting Subject</label></td>
+      <td><input type="text" id="MeetingSubject"></td>
+    </tr>
+
+    <tr>
+      <td><label>Meeting Details</label></td>
+      <td><input type="text" id="MeetingDetails" size="50"></td>
+    </tr>
+
+
+    <tr>
+      <td><label>VIP Customer</label></td>
+      <td><select name="VIPCustomer" id="VIPCustomer">
+        <option value="NO">No</option>
+        <option value="YES">Yes</option>
+      </select></td>
+    </tr>
+
+
+    <tr>
+      <td><label>Feedback</label></td>
+      <td><select name="Feedback" id="Feedback">
+        <option value="Good">Good</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Bad">Bad</option>
+        <option value="Terrible">Terrible :(</option>
+      </select></td>
+    </tr>
+  </table>
+  <br>
+  <button type="button" onclick="callAPI(
+		document.getElementById('CustomerName').value,
+		document.getElementById('Salesperson').value,
+		document.getElementById('Date').value,
+		document.getElementById('MeetingType').value,
+		document.getElementById('MeetingSubject').value,
+		document.getElementById('MeetingDetails').value,
+		document.getElementById('VIPCustomer').value,
+		document.getElementById('Feedback').value)">Call API
+  </button>
+</form>
+
+-->
+
+</body>
+</html>
+
+
