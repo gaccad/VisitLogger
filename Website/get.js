@@ -11,10 +11,28 @@ var callAPI = (CustomerName,
 
 	myHeaders.append("Content-Type", "application/json");
 
+
+/* 	CustomerName = 'TEST';
+	Salesperson = 'TEST';
+	Date = '21/06/21';
+	MeetingType = 'MEETING';
+	MeetingSubject = 'Chef';
+	MeetingDetails = 'TEST';
+	VIPCustomer = 'NO';
+	Feedback = 'GOOD'; */
+	
+	// Change date format to dd/mm/yy
+	dt = Date.substring(8, 10);
+	mn = Date.substring(5, 7);
+	yy = Date.substring(2, 4);
+	
+	newdate = dt + "/" + mn + "/" + yy
+	
+
 	var raw = JSON.stringify({
 		"CustomerName": CustomerName,
 		"Salesperson": Salesperson,
-		"Date": Date,
+		"Date": newdate,
 		"MeetingType": MeetingType,
 		"MeetingSubject": MeetingSubject,
 		"MeetingDetails": MeetingDetails,

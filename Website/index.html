@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="get.css">
+  <link rel="stylesheet" href="get.css"> 
   <link rel="stylesheet" href="w3.css">
   <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -74,53 +74,82 @@
 
         <p>Did you meet a VIP customer?</p>
         <label>
-          <input class="w3-radio" type="radio" name="vip-meeting" value="yes">
+          <input class="w3-radio" type="radio" name="vip-meeting" value="YES">
           <span>Yes</span>
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="vip-meeting" value="no" checked>
+          <input class="w3-radio" type="radio" name="vip-meeting" value="NO" checked>
           <span>No</span>
         </label>
+		
+<!-- 		<select name="VIPCustomer" id="VIPCustomer">
+				  <option value="NO">No</option>
+				  <option value="YES">Yes</option>
+		</select> -->
+				
+				
         <p></p>
 
         <p>How was the meeting?</p>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="very-good">
-          <img class="icon--size" src="fontawesome-free-5.15.3-web/grin-regular.svg"
-               alt="grinning emoticon">
-        </label>
-        <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="good">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Good">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/smile-regular.svg"
                alt="smiling emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="neutral">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Neutral">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/meh-regular.svg"
                alt="meh emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="bad">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Bad">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/frown-regular.svg"
                alt="frown emoticon">
         </label>
         <label>
-          <input class="w3-radio" type="radio" name="meeting-feedback" value="terrible">
+          <input class="w3-radio" type="radio" name="meeting-feedback" value="Terrible">
           <img class="icon--size" src="fontawesome-free-5.15.3-web/sad-cry-regular.svg"
                alt="sad crying emoticon">
         </label>
-        <p></p>
+		
 
-        <button class="w3-btn w3-amber" onclick="callAPI(
+<!-- 		<select name="Feedback" id="Feedback">
+				  <option value="Good">Good</option>
+				  <option value="Neutral">Neutral</option>
+				  <option value="Bad">Bad</option>
+				  <option value="Terrible">Terrible :(</option>
+				</select>
+		
+        <p></p> -->
+
+		<script>
+			var vip = document.getElementsByName('vip-meeting');
+			var vip_value;
+			for(var i = 0; i < vip.length; i++){
+				if(vip[i].checked){
+					vip_value = vip[i].value;
+				}
+			}
+			
+			var feedback = document.getElementsByName('meeting-feedback');
+			var feedback_value;
+			for(var i = 0; i < feedback.length; i++){
+				if(feedback[i].checked){
+					feedback_value = feedback[i].value;
+				}
+			}
+
+		</script>
+
+        <button class="w3-btn w3-amber" type="button" onclick="callAPI(
           document.getElementById('CustomerName').value,
           document.getElementById('Salesperson').value,
           document.getElementById('Date').value,
           document.getElementById('MeetingType').value,
           document.getElementById('MeetingSubject').value,
           document.getElementById('MeetingDetails').value,
-          // The code below requires changes to retrieve the checked radio button.
-          document.getElementById('VIPCustomer').value,
-          document.getElementById('Feedback').value)">Submit
+          vip_value,
+          feedback_value)">Submit
         </button>
 
       </form>
