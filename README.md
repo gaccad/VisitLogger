@@ -1,35 +1,9 @@
-# VisitLogger
-
-Simple Visit Logger using serverless architecture 
-
-# 1. Preface
-
-## 1.1	Introduction & Background
 
 The Visit Logger application offers a simple web interface for the sales people to enter their customer visits at the end of the day or while they are on the move. 
 The sales managers are notified when a VIP customer is visited and have access to an analysis platform to run their reports.
 
-## 1.2	Purpose of this Document
 
-This document describes the design and architecture of the solution and presents the basic technologies used.
-
-## 1.3	Scope
-
-### 1.3.1	Included In Scope
-
-The scope of the solution includes:
--	High Level Design overview of the solution
--	Description of each function
--	Phased approach of the project
--	Link to Github repository: https://github.com/gaccad/VisitLogger
--	Link to working application website: https://dev9334.d137fzgar94quk.amplifyapp.com/ 
-
-### 1.3.2	Excluded from Scope
-
--	Details of code use in lambda function and JavaScript frontend (can be found on the github repository).
-
-
-# 2.	Architecture Overview
+# Architecture Overview
 
 The Visit Logger application consists of multiple components that provide individual capabilities that address specific aspects of the overall solution. These components include:
 
@@ -61,7 +35,7 @@ AWS IAM
 ![alt text](https://github.com/gaccad/VisitLogger/blob/main/Overall%20Architecture.jpg)
 
 
-## 2.1	Overall Architectural Decisions
+## Overall Architectural Decisions
 
 -	All functionalities should be serverless whenever possible 
 -	NoSQL to be used instead of RDBMS for cost efficiency and due to the loose schema structure
@@ -73,7 +47,7 @@ AWS IAM
 -	DynamoDB insert trigger to be used for email notification instead of adding code to RecordVisit function: decoupling of functionality and scalability options for future event driven calls
 
 
-## 2.2	Database Structure
+## Database Structure
 
 -	ID (Primary Key)
 -	Customer Name
@@ -86,7 +60,7 @@ AWS IAM
 -	Feedback
 -	LegacyData
 
-## 2.3	Serverless Functions Details
+## Serverless Functions Details
 
 ### RecordVisits
 - Function: Received JSON object as a parameter from index.html and parses it then puts data into VisitTable in DynamoDB
@@ -108,7 +82,7 @@ AWS IAM
 - Function: In built function that connects DynamoDB VisitTable to Athena which is in turned used by QuickSight for data aggregation and analysis
 -	Trigger: QuickSight query 
 
-## 2.4	Flow Descriptions
+## Flow Descriptions
 
 ### 2.4.1	Visit Logging
 
@@ -118,20 +92,20 @@ AWS IAM
 4.	The lambda function puts the data into the DynamoDB table VisitTable
 5.	The user is notified via popup that the visit logging was successful
 
-### 2.4.2	Email Notification
+### Email Notification
 
 1.	User enters visit data and set the ‘VIP Customer’ field to ‘Yes’
 2.	DynamoDB event stream is triggered on insert and calls the EmailSupervisor lambda function
 3.	The function uses SES to send email to the supervisor (currently hardcoded) with visit details
  
 
-### 2.4.3	Visit Data Retrieval (Web)
+### Visit Data Retrieval (Web)
 
 Functionality is currently hidden. Can be tested from get.html page
 1.	User clicks on ‘Get recently entered visits’ link
 2.	Function returns predefined number of visits
 
-### 2.4.4	Legacy Data Loading
+### Legacy Data Loading
 
 1.	Legacy data is loaded into S3 in csv format
 2.	Disable EmailSupervisor Lambda trigger to avoid having to call the function on every insert
@@ -139,7 +113,7 @@ Functionality is currently hidden. Can be tested from get.html page
 4.	Lambda function LoadLegacyData is manually executed to load the data into DynamoDB
 5.	Enable EmailSupervisor Lambda trigger
 
-### 2.4.5	Visit Data Analysis
+### Visit Data Analysis
 
 1.	Sales manager logs into the Quicksight portal using his username and password
 2.	User selects a pre-defined analysis dashboard or can create a new one
