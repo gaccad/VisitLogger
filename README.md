@@ -20,17 +20,17 @@ The below picture gives a high-level view of the architecture of the Visit Logge
 
 Each of the components is listed below and will be further detailed in the following chapters.
 
-AWS Amplify	
-AWS Lambda 	
-API Gateway	
-AWS DynamoDB	
-AWS CodeCommit	
-AWS Simple Email Service	
-AWS Athena	
-AWS Quicksight	
-AWS S3	
-AWS Cognito	
-AWS IAM	
+- AWS Amplify	
+- AWS Lambda 	
+- API Gateway	
+- AWS DynamoDB	
+- AWS CodeCommit	
+- AWS Simple Email Service	
+- AWS Athena	
+- AWS Quicksight	
+- AWS S3	
+- AWS Cognito	
+- AWS IAM	
 
 ![alt text](https://github.com/gaccad/VisitLogger/blob/main/Overall%20Architecture.jpg)
 
