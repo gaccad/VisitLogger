@@ -84,7 +84,7 @@ Each of the components is listed below and will be further detailed in the follo
 
 ## Flow Descriptions
 
-### 2.4.1	Visit Logging
+### Visit Logging
 
 1.	User opens the webpage and enters the required data
 2.	The page calls the REST API and passed the captured parameters
