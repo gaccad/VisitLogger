@@ -119,4 +119,5 @@ Functionality is currently hidden. Can be tested from get.html page
 2.	User selects a pre-defined analysis dashboard or can create a new one
 
 ![alt text](https://github.com/gaccad/VisitLogger/blob/main/QuickSight%20Dashboard.jpg)
+![](https://komarev.com/ghpvc/?username=gaccad)
 
